@@ -10,10 +10,9 @@ import Account from './pages/Account';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
-const Tab = createBottomTabNavigator();
-
 FontAwesome.loadFont();
 
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function StackDashboard() {
@@ -33,43 +32,40 @@ function StackAccount() {
     </Stack.Navigator>
   );
 }
-export default function Routes() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Dashboard"
-          component={StackDashboard}
-          options={{
-            tabBarLabel: 'Destaques',
-            tabBarIcon: () => (
-              <FontAwesome
-                reverseColor
-                name="home"
-                color="#04f7f5"
-                type="font-awesome"
-                size={26}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Account"
-          component={StackAccount}
-          options={{
-            tabBarLabel: 'Perfil',
-            tabBarIcon: () => (
-              <FontAwesome
-                reverseColor
-                name="user"
-                color="#04f7f5"
-                type="font-awesome"
-                size={26}
-              />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+export default (signedIn = false) =>
+  NavigationContainer(
+    <Tab.Navigator initialRouteName={signedIn ? 'Account' : 'Dashboard'}>
+      <Tab.Screen
+        name="Dashboard"
+        component={StackDashboard}
+        options={{
+          tabBarLabel: 'Destaques',
+          tabBarIcon: () => (
+            <FontAwesome
+              reverseColor
+              name="home"
+              color="#3cf0c5"
+              type="font-awesome"
+              size={26}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={StackAccount}
+        options={{
+          tabBarLabel: 'Perfil',
+          tabBarIcon: () => (
+            <FontAwesome
+              reverseColor
+              name="user"
+              color="#3cf0c5"
+              type="font-awesome"
+              size={26}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>,
   );
-}
