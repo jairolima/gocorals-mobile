@@ -23,14 +23,7 @@ export default function SignIn() {
   const signed = useSelector((state) => state.auth.signed);
 
   function handleSubmit() {
-    try {
-      dispatch(signInRequest(email, password));
-    } catch (err) {
-      console.tron.log(err);
-    }
-    if (signed) {
-      navigation.goBack();
-    }
+    dispatch(signInRequest(email, password));
   }
 
   function navigateBack() {

@@ -2,6 +2,7 @@ import {takeLatest, call, put, all} from 'redux-saga/effects';
 import {Alert} from 'react-native';
 import api from '~/services/api';
 import {signInSuccess, signFailure} from './actions';
+import {navigate} from '~/services/navigationService';
 
 export function* signIn({payload}) {
   try {
@@ -17,6 +18,7 @@ export function* signIn({payload}) {
 
     yield put(signInSuccess(token, user));
 
+    navigate('Account');
     // history.push('/dashboard');
   } catch (err) {
     Alert.alert(
@@ -39,6 +41,7 @@ export function* signUp({payload}) {
       cpf,
     });
     Alert.alert('Cadastro de Usuário', 'Cadastradado com sucesso!');
+    navigate('SignIn');
     // history.push('/');
   } catch (err) {
     console.tron.log('erro no cadastro', err);
