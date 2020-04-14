@@ -23,3 +23,9 @@ export const LogoutButton = styled(Button)`
 export const SubmitButton = styled(Button)`
   margin-top: 5px;
 `;
+
+export const ProfileButton = styled(Button)`
+  margin-top: 5px;
+  background: #555555;
+  width: 100%;
+`;

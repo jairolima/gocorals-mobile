@@ -4,16 +4,25 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {signOut} from '~/store/modules/auth/actions';
 
-import {Container, LogoutButton, SubmitButton} from './styles';
+
+import {Container, LogoutButton, SubmitButton, ProfileButton, Header} from './styles';
+import Background from '~/components/Background';
 
 export default function Account() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const signed = useSelector((state) => state.auth.signed);
+  // const auth = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.user.profile);
+
 
   function navigateToSignIn() {
     navigation.navigate('SignIn');
+  }
+
+  function navigateToVouchers() {
+    navigation.navigate('Vouchers');
   }
 
   function handleLogout() {
@@ -21,10 +30,12 @@ export default function Account() {
   }
 
   return (
-    <Container>
+    <Background>
+      <Container>
       {signed && (
         <View>
-          <Text>Meus Vouchers</Text>
+          <Text>Olá {user.username},</Text>
+          <ProfileButton onPress={navigateToVouchers}>Meus Vouchers</ProfileButton>
           <Text>Meu Perfil</Text>
           <Text>Meus Cartões</Text>
           <LogoutButton onPress={handleLogout}>Sair</LogoutButton>
@@ -37,6 +48,7 @@ export default function Account() {
       <Text>Políticas de privacidade</Text>
       <Text>Atendimento</Text>
       <Text>Sobre o App</Text>
-    </Container>
+      </Container>
+    </Background>
   );
 }
