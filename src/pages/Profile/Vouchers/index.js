@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 import api from '~/services/api';
 import {useSelector} from 'react-redux';
@@ -30,21 +28,11 @@ export default function Vouchers() {
   }
   return (
     <Container>
-    <TouchableOpacity onPress={navigateBack}>
-          <FontAwesome
-            reverseColor
-            name="chevron-left"
-            color="#3cf0c5"
-            type="font-awesome"
-            size={26}
-          />
-    </TouchableOpacity>
     <VoucherList
         data={vouchers}
         keyExtractor={(voucher) => String(voucher.id)}
         renderItem={({item: voucher}) => (
           <Voucher>
-            <Name>{voucher.slot_id}</Name>
             <Name>{voucher.voucher_quantity}</Name>
             <Name>{voucher.slot.date}</Name>
           </Voucher>

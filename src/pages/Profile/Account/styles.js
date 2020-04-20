@@ -18,14 +18,17 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 export const LogoutButton = styled(Button)`
   margin-top: 5px;
   background: #f64c75;
+  width: 100%;
 `;
 
-export const SubmitButton = styled(Button)`
+export const LoginButton = styled(Button)`
   margin-top: 5px;
+  background: #3cf0c5;
+  width: 100%;
 `;
 
 export const ProfileButton = styled(Button)`
   margin-top: 5px;
-  background: #555555;
+  background: #494949;
   width: 100%;
 `;

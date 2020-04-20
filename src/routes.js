@@ -16,6 +16,7 @@ import Account from './pages/Profile/Account';
 import SignIn from './pages/Profile/SignIn';
 import SignUp from './pages/Profile/SignUp';
 import Vouchers from './pages/Profile/Vouchers';
+import Profile from './pages/Profile/Profile';
 
 // path of dashboard tab
 import Detail from './pages/New/Detail';
@@ -90,6 +91,7 @@ function StackAccount() {
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Vouchers" component={Vouchers} />
+      <Stack.Screen name="Profile" component={Profile} />
     </Stack.Navigator>
   );
 }

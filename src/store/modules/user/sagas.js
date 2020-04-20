@@ -5,14 +5,10 @@ import {updateProfileSuccess, updateProfilefailure} from './actions';
 
 export function* updateProfile({payload}) {
   try {
-    const {username, email, phone, cpf, ...rest} = payload.data;
+    const {phone} = payload.data;
 
     const profile = {
-      username,
-      email,
       phone,
-      cpf,
-      ...(rest.oldPassword ? rest : {}),
     };
 
     const response = yield call(api.put, 'users', profile);

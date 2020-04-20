@@ -2,24 +2,17 @@
 // import {getStatusBarHeight} from 'react-native-status-bar-height';
 
 import styled from 'styled-components/native';
-import {Platform} from 'react-native';
 
 import {RectButton} from 'react-native-gesture-handler';
 
 
-export const Container = styled.KeyboardAvoidingView.attrs({
-  enabled: Platform.IOS === 'ios',
-  behavior: 'padding',
-})`
+export const Container = styled.SafeAreaView`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
 `;
 
 export const VoucherList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
-  numColumns: 2,
+  numColumns: 1,
 })`
   margin-top: 60px;
   padding: 0 20px;

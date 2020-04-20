@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {signOut} from '~/store/modules/auth/actions';
 
 
-import {Container, LogoutButton, SubmitButton, ProfileButton, Header} from './styles';
+import {Container, LogoutButton, LoginButton, ProfileButton} from './styles';
 import Background from '~/components/Background';
 
 export default function Account() {
@@ -25,6 +25,10 @@ export default function Account() {
     navigation.navigate('Vouchers');
   }
 
+  function navigateToProfile() {
+    navigation.navigate('Profile');
+  }
+
   function handleLogout() {
     dispatch(signOut());
   }
@@ -32,22 +36,18 @@ export default function Account() {
   return (
     <Background>
       <Container>
-      {signed && (
-        <View>
-          <Text>Olá {user.username},</Text>
-          <ProfileButton onPress={navigateToVouchers}>Meus Vouchers</ProfileButton>
-          <Text>Meu Perfil</Text>
-          <Text>Meus Cartões</Text>
-          <LogoutButton onPress={handleLogout}>Sair</LogoutButton>
-        </View>
-      )}
 
-      {!signed && (
-        <SubmitButton onPress={navigateToSignIn}>Entrar</SubmitButton>
-      )}
-      <Text>Políticas de privacidade</Text>
-      <Text>Atendimento</Text>
-      <Text>Sobre o App</Text>
+
+      {signed && (<Text>Olá {user.username},</Text>)}
+      {signed && (<ProfileButton onPress={navigateToVouchers}>Meus Vouchers</ProfileButton>)}
+      {signed && (<ProfileButton onPress={navigateToProfile}>Meu Perfil</ProfileButton>)}
+      {signed && (<LogoutButton onPress={handleLogout}>Sair</LogoutButton>)}   
+
+      {!signed && (<LoginButton onPress={navigateToSignIn}>Entrar</LoginButton>)}
+
+      <ProfileButton onPress={navigateToVouchers}>Politicas de Privacidade</ProfileButton>
+      <ProfileButton onPress={navigateToVouchers}>Atendimento</ProfileButton>
+      <ProfileButton onPress={navigateToVouchers}>Sobre o App</ProfileButton>
       </Container>
     </Background>
   );
